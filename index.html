@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <title>Document</title>
+    <style>
+        .add,
+        .update {
+            display: none;
+        }
+        
+        .addResult,
+        .updateResult {
+            width: 150px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div id="output"></div>
+            </div>
+            <div class="col-6 mt-2">
+                <button type="button" class="btn btn-secondary text-white w-100" id="delete">Delete</button>
+                <button class="btn btn-secondary text-white w-100 mt-2" id="add">Add</button>
+                <form action="" class="add bg-info p-4 rounded text-white">
+                    <div class="form-group">
+                        <label for="">Task:</label>
+                        <input type="text" class="form-control" id="addTask">
+                        <label for="">Status:</label>
+                        <input type="text" class="form-control" id="addStatus" placeholder="to do">
+                        <input type="button" class="mt-4 btn bg-white text-secondary" s value="Add to list" id="add2">
+                        <div id="addResult" class="addResult"></div>
+                    </div>
+                </form>
+                <button class="btn btn-secondary text-white w-100 mt-2" id="update">Update</button>
+                <form action="" class="update bg-info p-4 rounded text-white">
+                    <div class="form-group">
+                        <label for="">Status:</label>
+                        <input type="text" class="form-control" id="updateStatus" placeholder="to do">
+                        <input type="button" class="mt-4 btn bg-white text-secondary" s value="Update list" id="update2">
+                        <div id="updateResult" class="updateResult"></div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+    <script src="handlebars.js"></script>
+    <script type="text/handlebars" id="taskbar-template">
+        {{#each this}} {{#myif status 'in progress'}}
+        <div class="bg-danger text-white mt-2 p-2 rounded">
+            {{else}} {{#myif status 'done'}}
+            <div class="bg-success text-white mt-2 p-2 rounded">
+                {{else}}
+                <div class="bg-warning text-white mt-2 p-2 rounded">
+                    {{/myif}} {{/myif}}
+                    <input type="checkbox" name="" id="" class="chbox">
+                    <span>{{title}}</span>
+                    <span>&nbsp;status:&nbsp;{{status}}</span>
+                </div> {{/each}}
+    </script>
+    <script src="jQuery.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
